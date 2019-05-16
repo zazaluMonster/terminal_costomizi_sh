@@ -25,7 +25,7 @@ bash_scripting practice
 alias mymaster='. ~/app/my-sys-info-manager/bin/sys-info-manager.sh'
 mymaster
  ```
- 3. reboot
+ 3. input `source ~/.bashrc`
 
  ## Examples
 
