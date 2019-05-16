@@ -19,10 +19,11 @@ bash_scripting practice
 
  ## How To Use
 
+ 0. git clone or Download zip
  1. open `~/.bashrc`
  2. input
  ```
-alias mymaster='. ~/app/my-sys-info-manager/bin/sys-info-manager.sh'
+alias mymaster='. /your_sh_path/sys-info-manager.sh'
 mymaster
  ```
  3. input `source ~/.bashrc`
