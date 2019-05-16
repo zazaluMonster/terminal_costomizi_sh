@@ -5,7 +5,7 @@ bash_scripting practice
 ## Catalog
 
 函数名称 | Task | 
----------|----------|---------
+---------|----------
  print_main | 主程序,默认执行
  weclome | 系统信息打印
  quick_cd | 常用目录引导
