@@ -57,6 +57,7 @@ quick_cd() {
     2.我的博客
     3.git相关
     4.我的学习文档
+    5.本程序所在目录
     "
     # 从键盘获取一个数字
     read -p " -> " -n 1 var
@@ -72,6 +73,9 @@ quick_cd() {
     elif [[ $var == 4 ]] 
     then
         cd /home/zazalu/Documents/MyTips/
+    elif [[ $var == 5 ]] 
+    then
+        cd /home/zazalu/app/my-sys-info-manager/bin
     fi
 }
 
@@ -138,6 +142,37 @@ usage () {
     return
 }
 
+# open_files 打开当前目录的文件管理器
+open_files() {
+    nautilus .
+}
+
+# 检查shadowsock是否已启动
+checkShadowsocks(){
+    #返回Address already in use表示已经启动
+    /usr/local/bin/sslocal -c /etc/shadowsocks.json -d start	
+}
+
+# 打开shadowsocks开机启动配置文件（请只修改节点为目的调用此方法）
+changeShadowsocksConfig(){
+    # 如果发现路径不对，尝试locate shadowsocks.json
+    vim /etc/shadowsocks.json
+}
+
+# 重启shadowsocks
+restartShadowsocks(){
+    echo "if you take a error like (Permission denied: '/var/run/shadowsocks.pid') use (sudo chmod 777 yourfilename)"
+    sudo /usr/local/bin/sslocal -c /etc/shadowsocks.json -d stop
+    sudo /usr/local/bin/sslocal -c /etc/shadowsocks.json -d start
+}
+
+# 打开JVM监控工具visualVM
+openVisualVM(){
+    # 使用参数指定下使用的jdk版本 不然无法运行visualVM
+    ./visualvm --jdkhome "/home/zazalu/jdk/jdk1.8.0_211"
+}
+
+
 # help
 forhelp() {
     echo "HELP:
@@ -149,6 +184,16 @@ forhelp() {
         查看当前cpu占用前10个进程
     -m
         查看当前内存占用前10个进程
+    -g
+        打开当前目录的GUI
+    -ssl
+        查看shadowsock启动状态
+    -ssc
+        修改shadowsock启动配置文件
+    -ssr
+        重启shadowsock后台服务
+    -jvm
+        启动JVM监控工具
     -h
         查看帮助文档"
 }
@@ -165,6 +210,16 @@ if [[ -n $1 ]]; then
         -m)          mem_top_ten
                      ;;
         -h)          forhelp
+                     ;;
+        -g)          open_files
+                     ;;
+        -ssl)        checkShadowsocks
+                     ;;
+        -ssc)        changeShadowsocksConfig
+                     ;;
+        -ssr)        restartShadowsocks
+                     ;;
+        -jvm)        openVisualVM
                      ;;
         *)           usage
                      ;;

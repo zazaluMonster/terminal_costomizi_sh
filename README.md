@@ -15,6 +15,7 @@ bash_scripting practice
  cpu_top_ten | 打印cpu占用前10进程
  mem_top_ten | 打印内存占用前10进程
  usage | 参数输出有误的引导
+ ... | 一些其他个人用小工具,有兴趣的话直接移步bin里的shell文件查看源码即可
  forhelp | 帮助文档
 
  ## How To Use
