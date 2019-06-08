@@ -150,7 +150,7 @@ open_files() {
 # 检查shadowsock是否已启动
 checkShadowsocks(){
     #返回Address already in use表示已经启动
-    /usr/local/bin/sslocal -c /etc/shadowsocks.json -d start	
+    ps -aux | grep shadowsocks	
 }
 
 # 打开shadowsocks开机启动配置文件（请只修改节点为目的调用此方法）
@@ -169,7 +169,7 @@ restartShadowsocks(){
 # 打开JVM监控工具visualVM
 openVisualVM(){
     # 使用参数指定下使用的jdk版本 不然无法运行visualVM
-    ./visualvm --jdkhome "/home/zazalu/jdk/jdk1.8.0_211"
+    /home/zazalu/app/visualvm_143/bin/visualvm --jdkhome "/home/zazalu/jdk/jdk1.8.0_211"
 }
 
 
