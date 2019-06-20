@@ -194,8 +194,47 @@ forhelp() {
         重启shadowsock后台服务
     -jvm
         启动JVM监控工具
+    -git
+        显示我自己总结的git帮助文档
     -h
         查看帮助文档"
+}
+
+# git help
+myGitHelp(){
+    echo "GIT COMMAND:
+    git add . 
+        添加改动过的文件到add区（Index区）
+    git commit -m \"\"
+        提交add区文件到commit区（HEAD区）
+    git push origin branch-name
+        推送commit区内容到远程分支
+    git init
+        在当前目录构建git库(生成.git)
+    git clone url
+        克隆一个库
+    git remote add origin url
+        连接一个远程git库
+    git checkout -b branch-name
+        创建一个新分支
+    git checkout branch-name
+        切换到某个分支
+    git push -d origin branch-name
+        删除远程库分支
+    git status
+        查看git状态，查看当前在哪个分支，查看当前修改未提交的文件等等
+    git log 
+        查看所有commit历史，每个commit记录都有一个commit-id
+    git reset
+        回退最近一次的[git add .]操作(专业术语：回退index区到就进一次修改之前)
+    git reset file-name
+        指定一个文件回退
+    git reset --soft <commit-id>
+        回退commit区（HEAD区），回退到<commit-id>对应的版本状态
+    git reset --mixed <commit-id>
+        不仅回退commit区，add区也会回退
+    git reset --hard <commit-id>
+        不仅回退commit和add，会把你的工作区(也就是本地文件内容！)，也回退，使用这个命令千万注意提前备份"
 }
 
 #run main
@@ -220,6 +259,8 @@ if [[ -n $1 ]]; then
         -ssr)        restartShadowsocks
                      ;;
         -jvm)        openVisualVM
+                     ;;
+        -git)        myGitHelp
                      ;;
         *)           usage
                      ;;
